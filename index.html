@@ -78,29 +78,62 @@
     >
   </head>
   <body>
-    <!--  <amp-analytics type="segment">
-      <script type="application/json">
-              {
-                "vars": {
-                  "writeKey": "owgz3gCFIJ6DPds9TyHdHj8iGRtMUUHr",
-                  "name": "AMP Home Page"
-                },
-                "linkers": {
-            "enabled": true
-          }
-        }
-              }
-      </script>
-    </amp-analytics>
--->
     <h1 id="hello">Hello Network18 !!!!</h1>
-
     <amp-analytics type="segment">
       <script type="application/json">
         {
           "vars": {
             "writeKey": "owgz3gCFIJ6DPds9TyHdHj8iGRtMUUHr",
-            "name": "AMP Product Home Page"
+            "name": "AMP Home Page"
+          },
+          "extraUrlParams": {
+            "properties.type": "article",
+            "properties.published_at": "2022-06-28",
+            "properties.author": "Ani Paul",
+            "properties.button_type": "read-more",
+            "properties.article_id": "article-ID-12345",
+            "properties.utm_source": "google",
+            "properties.utm_campaign": "2022-06-28",
+            "properties.utm_medium": "search"
+          },
+          "linkers": {
+            "enabled": true
+          }
+        }
+      </script>
+    </amp-analytics>
+
+    <button type="button" id="read-more-button1">
+      Trigger PageView Track Call
+    </button>
+    <amp-analytics type="segment">
+      <script type="application/json">
+        {
+          "vars": {
+            "writeKey": "owgz3gCFIJ6DPds9TyHdHj8iGRtMUUHr",
+            "name": "AMP Home Page"
+          },
+          "triggers": {
+            "click": {
+              "on": "click",
+              "selector": ["#read-more-button1"],
+              "request": "track",
+              "vars": {
+                "event": "AMP Home Page viewed"
+              }
+            }
+          }
+        }
+      </script>
+    </amp-analytics>
+
+    <button type="button" id="read-more-button">Trigger Track Call</button>
+    <amp-analytics type="segment">
+      <script type="application/json">
+        {
+          "vars": {
+            "writeKey": "owgz3gCFIJ6DPds9TyHdHj8iGRtMUUHr",
+            "name": "AMP Product Page"
           },
           "triggers": {
             "click": {
@@ -115,6 +148,5 @@
         }
       </script>
     </amp-analytics>
-    <button type="button" id="read-more-button">Trigger Track Call</button>
   </body>
 </html>
