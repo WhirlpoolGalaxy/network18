@@ -1,23 +1,48 @@
+<!--
+## Introduction
+
+An AMP HTML tutorial - learn the different building blocks of an AMP HTML file. AMP HTML is entirely built on existing web technologies. It achieves reliable performance by restricting some parts of HTML, CSS and JavaScript. To make up for those limitations AMP HTML defines a set of custom elements for rich content beyond basic HTML. This samples shows what's necessary to create a valid AMP HTML file.
+-->
+<!-- -->
+<!-- Doctype declaration is required. -->
 <!DOCTYPE html>
-<html amp lang="en">
+<!-- This tells everyone that this is an AMP file. `<html amp>` works too. -->
+<html ⚡ lang="en">
+  <!-- ## Head -->
+  <!-- -->
   <head>
+    <!-- The charset definition must be the first child of the `<head>` tag. -->
     <meta charset="utf-8" />
+    <title>Hello Network18!!!</title>
+    <!-- The AMP runtime must be loaded as the second child of the `<head>` tag.-->
     <script async src="https://cdn.ampproject.org/v0.js"></script>
     <script
       async
       custom-element="amp-analytics"
       src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"
     ></script>
-    <title>AMP Demo</title>
+    <!--
+    AMP HTML files require a canonical link pointing to the regular HTML. If no HTML version exists, it should point to itself.
+  -->
     <link
       rel="canonical"
-      href="https://amp.dev/documentation/guides-and-tutorials/start/create/basic_markup/"
+      href="https://amp.dev/documentation/examples/introduction/hello_world/index.html"
     />
-    <meta
-      name="viewport"
-      content="width=device-width,minimum-scale=1,initial-scale=1"
-    />
-
+    <!--
+    AMP HTML files require a viewport declaration. It's recommended to include initial-scale=1.
+  -->
+    <meta name="viewport" content="width=device-width" />
+    <!--
+    CSS must be embedded inline.
+  -->
+    <style amp-custom>
+      h1 {
+        color: red;
+      }
+    </style>
+    <!--
+    The AMP boilerplate.
+  -->
     <style amp-boilerplate>
       body {
         -webkit-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
@@ -77,8 +102,20 @@
       </style></noscript
     >
   </head>
+  <!-- ## Body -->
+  <!-- -->
   <body>
-    <h1 id="hello">Hello Network18 !!!!</h1>
+    <!--
+    Most HTML tags can be used directly in AMP HTML.
+  -->
+    <h1>Hello Network18!!!</h1>
+    <!--
+    Certain tags, such as the `<img>` tag, are replaced with equivalent or slightly enhanced custom AMP HTML tags (see [HTML Tags in the specification](https://github.com/ampproject/amphtml/blob/main/docs/spec/amp-html-format.md)). You can use the [AMP Validator](/documentation/guides-and-tutorials/learn/validation-workflow/validate_amp) to check
+    if your AMP HTML file is valid AMP HTML. Simply add `#development=1` to an AMP URL. Validation errors will be printed in the Javascript console. You can try it with this website which is built with AMP.
+
+    Check out the [other examples](/documentation/examples/) to learn more about AMP.
+  -->
+
     <amp-analytics type="segment">
       <script type="application/json">
         {
@@ -96,55 +133,40 @@
             "properties.utm_campaign": "2022-06-28",
             "properties.utm_medium": "search"
           },
-          "linkers": {
-            "enabled": true
-          }
-        }
-      </script>
-    </amp-analytics>
-
-    <button type="button" id="read-more-button1">
-      Trigger PageView Track Call
-    </button>
-    <amp-analytics type="segment">
-      <script type="application/json">
-        {
-          "vars": {
-            "writeKey": "owgz3gCFIJ6DPds9TyHdHj8iGRtMUUHr",
-            "name": "AMP News Home Page"
+          "triggers": {
+            "click": {
+              "on": "click",
+              "selector": ".read-more-button1",
+              "request": "track",
+              "vars": {
+                "event": "News HomePage viewed"
+              }
+            }
           },
           "extraUrlParams": {
             "properties.interetstednewscategory": "sports"
-          },
-          "triggers": {
-            "click": {
-              "on": "click",
-              "selector": ["#read-more-button1"],
-              "request": "track",
-              "vars": {
-                "event": "News Home Page viewed"
-              }
-            }
           }
         }
       </script>
     </amp-analytics>
 
-    <button type="button" id="read-more-button">Trigger Track Call</button>
+    <button class="read-more-button1">Trigger First Track</button>
+    <button class="read-more-button2">Trigger Second Track</button>
+
     <amp-analytics type="segment">
       <script type="application/json">
         {
           "vars": {
             "writeKey": "owgz3gCFIJ6DPds9TyHdHj8iGRtMUUHr",
-            "name": "AMP Article Page"
+            "name": "News Feed Page"
           },
           "triggers": {
             "click": {
               "on": "click",
-              "selector": ["#read-more-button"],
+              "selector": ".read-more-button",
               "request": "track",
               "vars": {
-                "event": "Newsid-1 viewed"
+                "event": "Read More Clicked"
               }
             }
           }
