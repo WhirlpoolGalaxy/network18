@@ -33,8 +33,19 @@ An AMP HTML tutorial - learn the different building blocks of an AMP HTML file. 
   -->
     <meta name="viewport" content="width=device-width" />
     <!--
-    CSS must be embedded inline.
+    AMP Selector
   -->
+    <amp-selector
+      role="button"
+      tabindex="0"
+      on="select:my-analytics"
+      layout="container"
+    >
+      <div class="my-button">View Page</div>
+    </amp-selector>
+
+    ```
+
     <style amp-custom>
       h1 {
         color: #8400ff;
@@ -143,73 +154,11 @@ An AMP HTML tutorial - learn the different building blocks of an AMP HTML file. 
     Check out the [other examples](/documentation/examples/) to learn more about AMP.
   -->
 
-    <amp-analytics type="segment">
-      <script type="application/json">
-        {
-          "vars": {
-            "writeKey": "owgz3gCFIJ6DPds9TyHdHj8iGRtMUUHr",
-            "name": "AMP Home Page",
-            "anonymousId": "CLIENT_ID(AMP_ECID_GOOGLE,,ajs_anonymous_id)",
-            "cid": "CLIENT_ID(AMP_ECID_GOOGLE,,_ga)"
-          },
-          "extraUrlParams": {
-            "properties.type": "article",
-            "properties.published_at": "2022-06-28",
-            "properties.author": "Ani Paul",
-            "properties.button_type": "read-more",
-            "properties.article_id": "article-ID-12345",
-            "properties.utm_source": "google",
-            "properties.utm_campaign": "2022-06-28",
-            "properties.utm_medium": "search"
-          },
-          "triggers": {
-            "click": {
-              "on": "click",
-              "selector": ".read-more-button1",
-              "request": "track",
-              "vars": {
-                "event": "Read Article Homepage"
-              }
-            }
-          },
-          "extraUrlParams": {
-            "properties.interestednewscategory": "sports"
-          }
-        }
-      </script>
-    </amp-analytics>
-    <amp-analytics type="segment">
-      <script type="application/json">
-        {
-          "vars": {
-            "writeKey": "owgz3gCFIJ6DPds9TyHdHj8iGRtMUUHr",
-            "name": "News Feed Page",
-            "anonymousId": "CLIENT_ID(AMP_ECID_GOOGLE,,ajs_anonymous_id)",
-            "cid": "CLIENT_ID(AMP_ECID_GOOGLE,,_ga)"
-          },
-          "triggers": {
-            "click": {
-              "on": "click",
-              "selector": ".read-more-button2",
-              "request": "track",
-              "vars": {
-                "event": "Read Business News"
-              }
-            }
-          },
-          "extraUrlParams": {
-            "properties.interestednewscategory": "BusinessNews"
-          }
-        }
-        }
-      </script>
-    </amp-analytics>
-
     <div class="button-container">
-      <button class="read-more-button1 button">
+      <button on="click:read-more-button" class="read-more-button1 button">
         Trigger First Track (Sports News)
       </button>
-      <button class="read-more-button2 button">
+      <button on="click:read-more-button2" class="read-more-button2 button">
         Trigger Second Track (Business News)
       </button>
       <button class="button">
@@ -217,6 +166,95 @@ An AMP HTML tutorial - learn the different building blocks of an AMP HTML file. 
           >This is a Href Button outside amp list, work perfect!</a
         >
       </button>
+
+      <button class="view-button">View Page</button>
+      <amp-analytics>
+        <script type="application/json">
+          {
+            "requests": {
+              "pageview": "<https://www.example.com/analytics?pageview>"
+            },
+            "triggers": {
+              "my-analytics": {
+                "on": "click",
+                "selector": ".view-button",
+                "request": "pageview"
+              }
+            }
+          }
+        </script>
+      </amp-analytics>
+
+      <amp-analytics type="segment">
+        <script type="application/json">
+          {
+            "vars": {
+              "writeKey": "owgz3gCFIJ6DPds9TyHdHj8iGRtMUUHr",
+              "name": "Sports Page",
+              "anonymousId": "CLIENT_ID(AMP_ECID_GOOGLE,,ajs_anonymous_id)",
+              "cid": "CLIENT_ID(AMP_ECID_GOOGLE,,_ga)"
+            },
+            "extraUrlParams": {
+              "properties.type": "article",
+              "properties.published_at": "2022-06-28",
+              "properties.author": "Ani Paul",
+              "properties.button_type": "read-more",
+              "properties.article_id": "article-ID-12345",
+              "properties.utm_source": "google",
+              "properties.utm_campaign": "2022-06-28",
+              "properties.utm_medium": "search"
+            },
+            "triggers": {
+              "click": {
+                "on": "click",
+                "selector": ".read-more-button1",
+                "request": "track",
+                "vars": {
+                  "event": "Read Sports Article"
+                }
+              }
+            },
+            "extraUrlParams": {
+              "properties.interestednewscategory": "SportsNews"
+            }
+          }
+        </script>
+      </amp-analytics>
+      <amp-analytics type="segment">
+        <script type="application/json">
+          {
+            "vars": {
+              "writeKey": "owgz3gCFIJ6DPds9TyHdHj8iGRtMUUHr",
+              "name": "Business Page",
+              "anonymousId": "CLIENT_ID(AMP_ECID_GOOGLE,,ajs_anonymous_id)",
+              "cid": "CLIENT_ID(AMP_ECID_GOOGLE,,_ga)"
+            },
+            "extraUrlParams": {
+              "properties.type": "article",
+              "properties.published_at": "2022-06-28",
+              "properties.author": "Ani Paul",
+              "properties.button_type": "read-more",
+              "properties.article_id": "article-ID-12345",
+              "properties.utm_source": "google",
+              "properties.utm_campaign": "2022-06-28",
+              "properties.utm_medium": "search"
+            },
+            "triggers": {
+              "click": {
+                "on": "click",
+                "selector": ".read-more-button2",
+                "request": "track",
+                "vars": {
+                  "event": "Read Business Article"
+                }
+              }
+            },
+            "extraUrlParams": {
+              "properties.interestednewscategory": "BusinessNews"
+            }
+          }
+        </script>
+      </amp-analytics>
     </div>
   </body>
 </html>
