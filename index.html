@@ -128,6 +128,22 @@ An AMP HTML tutorial - learn the different building blocks of an AMP HTML file. 
         }
       </style></noscript
     >
+
+    <script type="text/javascript">
+      (function () {
+        var cookieValue = "";
+        var nameEQ = "myCookie" + "=";
+        var ca = document.cookie.split(";");
+        for (var i = 0; i < ca.length; i++) {
+          var c = ca[i];
+          while (c.charAt(0) == " ") c = c.substring(1, c.length);
+          if (c.indexOf(nameEQ) == 0)
+            cookieValue = c.substring(nameEQ.length, c.length);
+        }
+        var myVariable = cookieValue || "default value";
+        console.log("The value of myVariable is " + myVariable);
+      })();
+    </script>
   </head>
   <!-- ## Body -->
   <!-- -->
@@ -148,7 +164,7 @@ An AMP HTML tutorial - learn the different building blocks of an AMP HTML file. 
         {
           "vars": {
             "writeKey": "owgz3gCFIJ6DPds9TyHdHj8iGRtMUUHr",
-            "name": "Network18 Home Page"
+            "name": "AMP Home Page"
           },
           "extraUrlParams": {
             "properties.type": "article",
