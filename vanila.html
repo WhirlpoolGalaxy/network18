@@ -1,0 +1,214 @@
+<!--
+## Introduction
+
+An AMP HTML tutorial - learn the different building blocks of an AMP HTML file. AMP HTML is entirely built on existing web technologies. It achieves reliable performance by restricting some parts of HTML, CSS and JavaScript. To make up for those limitations AMP HTML defines a set of custom elements for rich content beyond basic HTML. This samples shows what's necessary to create a valid AMP HTML file.
+-->
+<!-- -->
+<!-- Doctype declaration is required. -->
+<!DOCTYPE html>
+<!-- This tells everyone that this is an AMP file. `<html amp>` works too. -->
+<html ⚡ lang="en">
+  <!-- ## Head -->
+  <!-- -->
+  <head>
+    <!-- The charset definition must be the first child of the `<head>` tag. -->
+    <meta charset="utf-8" />
+    <title>Hello AMP!!!</title>
+    <!-- The AMP runtime must be loaded as the second child of the `<head>` tag.-->
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <script
+      async
+      custom-element="amp-analytics"
+      src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"
+    ></script>
+    <!--
+    AMP HTML files require a canonical link pointing to the regular HTML. If no HTML version exists, it should point to itself.
+  -->
+    <link
+      rel="canonical"
+      href="https://amp.dev/documentation/examples/introduction/hello_world/index.html"
+    />
+    <!--
+    AMP HTML files require a viewport declaration. It's recommended to include initial-scale=1.
+  -->
+    <meta name="viewport" content="width=device-width" />
+    <!--
+    CSS must be embedded inline.
+  -->
+    <style amp-custom>
+      h1 {
+        color: #8400ff;
+      }
+      /* Custom styles */
+      .button-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 20vh;
+      }
+
+      .button {
+        display: block;
+        margin-bottom: 10px;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        background-color: #00ff15;
+        color: #0e0c0c;
+        font-size: 18px;
+        font-weight: 600;
+        text-align: center;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      .button:hover {
+        background-color: #0069d9;
+      }
+    </style>
+    <!--
+    The AMP boilerplate.
+  -->
+    <style amp-boilerplate>
+      body {
+        -webkit-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+        -moz-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+        -ms-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+        animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+      }
+      @-webkit-keyframes -amp-start {
+        from {
+          visibility: hidden;
+        }
+        to {
+          visibility: visible;
+        }
+      }
+      @-moz-keyframes -amp-start {
+        from {
+          visibility: hidden;
+        }
+        to {
+          visibility: visible;
+        }
+      }
+      @-ms-keyframes -amp-start {
+        from {
+          visibility: hidden;
+        }
+        to {
+          visibility: visible;
+        }
+      }
+      @-o-keyframes -amp-start {
+        from {
+          visibility: hidden;
+        }
+        to {
+          visibility: visible;
+        }
+      }
+      @keyframes -amp-start {
+        from {
+          visibility: hidden;
+        }
+        to {
+          visibility: visible;
+        }
+      }
+    </style>
+    <noscript
+      ><style amp-boilerplate>
+        body {
+          -webkit-animation: none;
+          -moz-animation: none;
+          -ms-animation: none;
+          animation: none;
+        }
+      </style></noscript
+    >
+  </head>
+  <!-- ## Body -->
+  <!-- -->
+  <body>
+    <!--
+    Most HTML tags can be used directly in AMP HTML.
+  -->
+    <h1>Hello AMP World!!!</h1>
+    <!--
+    Certain tags, such as the `<img>` tag, are replaced with equivalent or slightly enhanced custom AMP HTML tags (see [HTML Tags in the specification](https://github.com/ampproject/amphtml/blob/main/docs/spec/amp-html-format.md)). You can use the [AMP Validator](/documentation/guides-and-tutorials/learn/validation-workflow/validate_amp) to check
+    if your AMP HTML file is valid AMP HTML. Simply add `#development=1` to an AMP URL. Validation errors will be printed in the Javascript console. You can try it with this website which is built with AMP.
+
+    Check out the [other examples](/documentation/examples/) to learn more about AMP.
+  -->
+
+    <amp-analytics type="segment">
+      <script type="application/json">
+        {
+          "vars": {
+            "writeKey": "owgz3gCFIJ6DPds9TyHdHj8iGRtMUUHr",
+            "name": "AMP Home Page"
+          },
+          "extraUrlParams": {
+            "properties.type": "article",
+            "properties.published_at": "2022-06-28",
+            "properties.author": "Ani Paul",
+            "properties.button_type": "read-more",
+            "properties.article_id": "article-ID-12345",
+            "properties.utm_source": "google",
+            "properties.utm_campaign": "2022-06-28",
+            "properties.utm_medium": "search"
+          },
+          "triggers": {
+            "click": {
+              "on": "click",
+              "selector": ".read-more-button1",
+              "request": "track",
+              "vars": {
+                "event": "Read Article Vanila Homepage"
+              }
+            }
+          },
+          "extraUrlParams": {
+            "properties.interetstednewscategory": "sports"
+          }
+        }
+      </script>
+    </amp-analytics>
+    <amp-analytics type="segment">
+      <script type="application/json">
+        {
+          "vars": {
+            "writeKey": "owgz3gCFIJ6DPds9TyHdHj8iGRtMUUHr",
+            "name": "News Feed Page"
+          },
+          "triggers": {
+            "click": {
+              "on": "click",
+              "selector": ".read-more-button",
+              "request": "track",
+              "vars": {
+                "event": "Read More Vanila Clicked"
+              }
+            }
+          }
+        }
+      </script>
+    </amp-analytics>
+
+    <div class="button-container">
+      <button class="read-more-button1 button">
+        Trigger First Track (Read Article Homepage)
+      </button>
+      <button class="read-more-button button">
+        Trigger Second Track (Read More Clicked)
+      </button>
+      <button class="button">
+        <a href="./index2.html" [href]="hrefState.link"
+          >This is a Href Button outside amp list, work perfect!</a
+        >
+      </button>
+    </div>
+  </body>
+</html>
