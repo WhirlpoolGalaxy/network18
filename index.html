@@ -145,50 +145,42 @@ An AMP HTML tutorial - learn the different building blocks of an AMP HTML file. 
 
     <amp-analytics type="segment">
       <script type="application/json">
-                {
-                   if context.library.name == "amp":
-          cid = context.amp.id //either _ga value or "amp_base64-encoded-string" value
-        else:
-          return
-                  "vars": {
-                    "writeKey": "owgz3gCFIJ6DPds9TyHdHj8iGRtMUUHr",
-                    "name": "AMP Home Page",
-                    "anonymousId": "CLIENT_ID(AMP_ECID_GOOGLE,,ajs_anonymous_id)",
-                    "cid": "CLIENT_ID(AMP_ECID_GOOGLE,,_ga)"
-                  },
-                  "extraUrlParams": {
-                    "properties.type": "article",
-                    "properties.published_at": "2022-06-28",
-                    "properties.author": "Ani Paul",
-                    "properties.button_type": "read-more",
-                    "properties.article_id": "article-ID-12345",
-                    "properties.utm_source": "google",
-                    "properties.utm_campaign": "2022-06-28",
-                    "properties.utm_medium": "search"
-                  },
-                  "triggers": {
-                    "click": {
-                      "on": "click",
-                      "selector": ".read-more-button1",
-                      "request": "track",
-                      "vars": {
-                        "event": "Read Article Homepage"
-                      }
-                    }
-                  },
-                  "extraUrlParams": {
-                    "properties.interetstednewscategory": "sports"
-                  }
-                }
+        {
+          "vars": {
+            "writeKey": "owgz3gCFIJ6DPds9TyHdHj8iGRtMUUHr",
+            "name": "AMP Home Page",
+            "anonymousId": "CLIENT_ID(AMP_ECID_GOOGLE,,ajs_anonymous_id)",
+            "cid": "CLIENT_ID(AMP_ECID_GOOGLE,,_ga)"
+          },
+          "extraUrlParams": {
+            "properties.type": "article",
+            "properties.published_at": "2022-06-28",
+            "properties.author": "Ani Paul",
+            "properties.button_type": "read-more",
+            "properties.article_id": "article-ID-12345",
+            "properties.utm_source": "google",
+            "properties.utm_campaign": "2022-06-28",
+            "properties.utm_medium": "search"
+          },
+          "triggers": {
+            "click": {
+              "on": "click",
+              "selector": ".read-more-button1",
+              "request": "track",
+              "vars": {
+                "event": "Read Article Homepage"
+              }
+            }
+          },
+          "extraUrlParams": {
+            "properties.interetstednewscategory": "sports"
+          }
+        }
       </script>
     </amp-analytics>
     <amp-analytics type="segment">
       <script type="application/json">
         {
-          if context.library.name == "amp":
-          cid = context.amp.id //either _ga value or "amp_base64-encoded-string" value
-        else:
-          return
           "vars": {
             "writeKey": "owgz3gCFIJ6DPds9TyHdHj8iGRtMUUHr",
             "name": "News Feed Page",
