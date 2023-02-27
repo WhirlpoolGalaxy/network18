@@ -13,7 +13,7 @@ An AMP HTML tutorial - learn the different building blocks of an AMP HTML file. 
   <head>
     <!-- The charset definition must be the first child of the `<head>` tag. -->
     <meta charset="utf-8" />
-    <title>AMP Homepage !!!</title>
+    <title>AMP Sports News!!!</title>
     <!-- The AMP runtime must be loaded as the second child of the `<head>` tag.-->
     <script async src="https://cdn.ampproject.org/v0.js"></script>
     <script
@@ -32,6 +32,17 @@ An AMP HTML tutorial - learn the different building blocks of an AMP HTML file. 
     AMP HTML files require a viewport declaration. It's recommended to include initial-scale=1.
   -->
     <meta name="viewport" content="width=device-width" />
+    <!--
+    AMP Selector
+  -->
+    <amp-selector
+      role="button"
+      tabindex="0"
+      on="select:my-analytics"
+      layout="container"
+    >
+      <div class="my-button">View Page</div>
+    </amp-selector>
 
     <style amp-custom>
       h1 {
@@ -133,7 +144,7 @@ An AMP HTML tutorial - learn the different building blocks of an AMP HTML file. 
     <!--
     Most HTML tags can be used directly in AMP HTML.
   -->
-    <h1>AMP Homepage!!!</h1>
+    <h1>AMP Sports Article!!!</h1>
     <!--
     Certain tags, such as the `<img>` tag, are replaced with equivalent or slightly enhanced custom AMP HTML tags (see [HTML Tags in the specification](https://github.com/ampproject/amphtml/blob/main/docs/spec/amp-html-format.md)). You can use the [AMP Validator](/documentation/guides-and-tutorials/learn/validation-workflow/validate_amp) to check
     if your AMP HTML file is valid AMP HTML. Simply add `#development=1` to an AMP URL. Validation errors will be printed in the Javascript console. You can try it with this website which is built with AMP.
@@ -142,30 +153,16 @@ An AMP HTML tutorial - learn the different building blocks of an AMP HTML file. 
   -->
 
     <div class="button-container">
-      <button class="button">
-        <a href="./Sportsnews.html" [href]="hrefState.link">Sports Article!</a>
+      <button on="click:read-more-button" class="read-more-button1 button">
+        Trigger Track (Sports News)
       </button>
-      <button class="button">
-        <a href="./Businessnews.html" [href]="hrefState.link"
-          >Business Article!</a
-        >
-      </button>
-      <!--
-      <button class="button">
-        <a href="./index2.html" [href]="hrefState.link"
-          >Non AMP Webpage, work perfect!</a
-        >
-      </button>
-      -->
-      <a href="./nonampwebpage.html" class="external-button"
-        >Non AMP Webpage, work perfect!</a
-      >
+
       <amp-analytics type="segment">
         <script type="application/json">
           {
             "vars": {
               "writeKey": "owgz3gCFIJ6DPds9TyHdHj8iGRtMUUHr",
-              "name": "AMP HomePage",
+              "name": "AMP Sports Page",
               "anonymousId": "CLIENT_ID(AMP_ECID_GOOGLE,,ajs_anonymous_id)",
               "cid": "CLIENT_ID(AMP_ECID_GOOGLE,,_ga)"
             },
@@ -185,12 +182,12 @@ An AMP HTML tutorial - learn the different building blocks of an AMP HTML file. 
                 "selector": ".read-more-button1",
                 "request": "track",
                 "vars": {
-                  "event": "AMP Homepage"
+                  "event": "Read Sports Article"
                 }
               }
             },
             "extraUrlParams": {
-              "properties.interestednewscategory": "Homepage"
+              "properties.interestednewscategory": "SportsNews"
             }
           }
         </script>
