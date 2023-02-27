@@ -37,7 +37,7 @@ An AMP HTML tutorial - learn the different building blocks of an AMP HTML file. 
   -->
     <style amp-custom>
       h1 {
-        color: rgb(0, 8, 255);
+        color: #8400ff;
       }
       /* Custom styles */
       .button-container {
@@ -45,7 +45,7 @@ An AMP HTML tutorial - learn the different building blocks of an AMP HTML file. 
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        height: 100vh;
+        height: 20vh;
       }
 
       .button {
@@ -54,8 +54,8 @@ An AMP HTML tutorial - learn the different building blocks of an AMP HTML file. 
         padding: 10px 20px;
         border: none;
         border-radius: 5px;
-        background-color: #007bff;
-        color: #fff;
+        background-color: #00ff15;
+        color: #0e0c0c;
         font-size: 18px;
         font-weight: 600;
         text-align: center;
@@ -135,7 +135,7 @@ An AMP HTML tutorial - learn the different building blocks of an AMP HTML file. 
     <!--
     Most HTML tags can be used directly in AMP HTML.
   -->
-    <h1>Hello Network18!!!</h1>
+    <h1>Hello AMP World!!!</h1>
     <!--
     Certain tags, such as the `<img>` tag, are replaced with equivalent or slightly enhanced custom AMP HTML tags (see [HTML Tags in the specification](https://github.com/ampproject/amphtml/blob/main/docs/spec/amp-html-format.md)). You can use the [AMP Validator](/documentation/guides-and-tutorials/learn/validation-workflow/validate_amp) to check
     if your AMP HTML file is valid AMP HTML. Simply add `#development=1` to an AMP URL. Validation errors will be printed in the Javascript console. You can try it with this website which is built with AMP.
@@ -166,7 +166,7 @@ An AMP HTML tutorial - learn the different building blocks of an AMP HTML file. 
               "selector": ".read-more-button1",
               "request": "track",
               "vars": {
-                "event": "News HomePage viewed"
+                "event": "Read Article Homepage"
               }
             }
           },
@@ -176,10 +176,6 @@ An AMP HTML tutorial - learn the different building blocks of an AMP HTML file. 
         }
       </script>
     </amp-analytics>
-    <div class="button-container">
-      <button class="read-more-button1 button">Trigger First Track</button>
-      <button class="read-more-button2 button">Trigger Second Track</button>
-    </div>
     <amp-analytics type="segment">
       <script type="application/json">
         {
@@ -200,10 +196,19 @@ An AMP HTML tutorial - learn the different building blocks of an AMP HTML file. 
         }
       </script>
     </amp-analytics>
-    <button class="btn">
-      <a href="./index2.html" [href]="hrefState.link"
-        >This is a Href Button outside amp list, work perfect!</a
-      >
-    </button>
+
+    <div class="button-container">
+      <button class="read-more-button1 button">
+        Trigger First Track (Read Article Homepage)
+      </button>
+      <button class="read-more-button button">
+        Trigger Second Track (Read More Clicked)
+      </button>
+      <button class="button">
+        <a href="./index2.html" [href]="hrefState.link"
+          >This is a Href Button outside amp list, work perfect!</a
+        >
+      </button>
+    </div>
   </body>
 </html>
